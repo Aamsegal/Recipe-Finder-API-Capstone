@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Recipy Finder</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <main>
+        <div class="container">
+            <h1>Recipy Finder</h1>
+    
+            <form id="food-form">
+                <label for="food-term">Food</label>
+                <input type="text" name="food-term" id="js-food-term" placeholder="Chicken, Salmon, Beef" required><br>
+    
+                <label for="cuisine-term">Cuisine</label>
+                <input type="text" name="cuisine-term" id="js-cuisine-term" placeholder="Indian, Chinese, Italian"><br>
+
+                <lavel for="recipy-number">How many recipies</lavel>
+                <input type="number" name="recipy-number" id="js-recipy-number" min = "1" max = "20" placeholder="1-20" required><br>
+
+                <input type="checkbox" name="alergy1" value="dairy-free" id="alergy1"> Dairy free<br>
+                <input type="checkbox" name="alergy2" value="nut-free" id="alergy2"> Nut free<br>
+    
+                <input type="submit" value="Search!">
+            </form>
+        </div>
+
+        <p id="js-error-message" class="error-message"></p>
+
+        <section class="recipy-results" id="recipy-results">
+
+        </section>
+
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
