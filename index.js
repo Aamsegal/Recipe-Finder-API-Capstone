@@ -16,13 +16,13 @@ function formatQueryParams(params) {
 
 function getRecipyList(foodTerm, cuisineTerm, alergy1, alergy2, recipyNumber) {
     if (alergy1) {
-        alergy1 =  '&health=dairy-free';
+        alergy1 =  '&health=peanut-free';
     } else {
         alergy1 = '';
     }
     
     if (alergy2) {
-        alergy2 = '&health=nut-free'
+        alergy2 = '&health=tree-nut-free'
     } else {
         alergy2 ='';
     }
@@ -81,16 +81,27 @@ function displayResults(responseJson) {
   const jsonLength = responseJson.hits.length;
   for (let i = 0; i < jsonLength; i++) {
     const jsonIndex = responseJson.hits[i];
+
+    
     $('#recipy-results').append(
       `<img src="${jsonIndex.recipe.image}">
       <p>${jsonIndex.recipe.label}</p>
+      <ul id="recipe-${i}"></ul>
       <a href=${jsonIndex.recipe.url} target="_blank">${jsonIndex.recipe.url}</a><br>
       `
     )
+    getIngredients(responseJson,i);
   }
+}
 
-  /*$('#park-Group').append(resultList);*/
-  //display the results section  
+function getIngredients(responseJson,i) {
+    const ingredientLength = responseJson.hits[i].recipe.ingredientLines.length;
+    for (let x = 0; x < ingredientLength; x++) {
+    const ingredientIndex = responseJson.hits[i].recipe.ingredientLines[x];
+    $(`#recipe-${i}`).append(
+        `<li>${ingredientIndex}</li>`
+        )
+    }
 }
 
 function watchForm() {
