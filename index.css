@@ -1,4 +1,4 @@
-body {
+/*body {
     box-sizing: border-box;
 }
 
@@ -9,7 +9,7 @@ body {
 }
 
 
-/*@media screen and (max-width: 520px) {}*/
+@media screen and (max-width: 520px) {}
     .form-container h1, h2, a {
         text-align: center;
     }
@@ -31,4 +31,4 @@ body {
     
     .recipe-section {
         border-bottom: 2px solid black;
-    }
+    }*/
