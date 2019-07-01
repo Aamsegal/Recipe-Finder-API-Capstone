@@ -5,6 +5,7 @@ const apiKey = '1d991e6283e9a6a365d439062706bb24';
 const apiId = '92de8f02';
 const searchURL = 'https://api.edamam.com/search';
 const exampleCall = 'https://api.edamam.com/search?q=chicken&app_id=92de8f02&app_key=1d991e6283e9a6a365d439062706bb24&from=0&to=3&calories=591-722&health=alcohol-free';
+const dietaryRestrictionList ="dairy-free   egg-free   gluten-free   keto-free   khosher   low-sugar   paleo   red-meat-free   seasame-free   shellfish-free   soy-free   vegan vegitarian"
 
 
 function formatQueryParams(params) {
@@ -14,35 +15,31 @@ function formatQueryParams(params) {
 }
 
 
-function getRecipyList(foodTerm, cuisineTerm, alergy1, alergy2, recipyNumber) {
-    if (alergy1) {
-        alergy1 =  '&health=peanut-free';
-    } else {
-        alergy1 = '';
-    }
-    
-    if (alergy2) {
-        alergy2 = '&health=tree-nut-free'
-    } else {
-        alergy2 ='';
-    }
-
-    if (cuisineTerm) {
-        cuisineTerm = `&cuisineType=${cuisineTerm}`;
-    } else {
-        cuisineTerm ='';
-    }
+function getInitialRecipeList(foodTerm, cuisineTerm, alergyBooleanArray, callNumber) {
   const params = {
     q: foodTerm,
     app_id: apiId,
     app_key: apiKey,
     from: 0,
-    to: recipyNumber    
+    to: 10
     };
 
-  const queryString = formatQueryParams(params)
-  const url = searchURL + '?' + queryString + cuisineTerm + alergy1 + alergy2;
+    /*const fromBase = 0;
+    const toBase = 9;
+    const from = fromBase + callNumber*10;
+    const to = toBase + callNumber*10;*/
+    // the code above is trying to set the ground work to scroll for more recipies
+  const queryString = formatQueryParams(params);
+  let url = searchURL + '?' + queryString /*+ `&from=${from}&to=${to}`*/;
+  for (let alergyIndex = 0; alergyIndex <= 15; alergyIndex++) {
+    if (alergyBooleanArray[alergyIndex]) {
+        url =  url + '&health='+ $(`#alergy${alergyIndex}`).val();
+    } 
+  } 
+
+
   console.log(url);
+
 
 fetch(url)
   .then(response => {
@@ -53,22 +50,22 @@ fetch(url)
   })
   .then(responseJson => displayResults(responseJson))
   .catch(err => {
-      $('.recipy-results').empty();
+      $('.recipe-results').empty();
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
 
 });
 }
 
 
-function displayResults(responseJson) {
+function displayResults(responseJson, url) {
   // if there are previous results, remove them
   console.log(responseJson);
-  $('.recipy-results').empty();
+  $('.recipe-results').empty();
   // iterate through the items array
   const noResults = !responseJson || (responseJson && !responseJson.hits.length);
 
   if (noResults) {
-    $('#recipy-results').append('No reslts found');
+    $('#recipe-results').append('No reslts found');
     return;
   }
 
@@ -83,11 +80,13 @@ function displayResults(responseJson) {
     const jsonIndex = responseJson.hits[i];
 
     
-    $('#recipy-results').append(
-      `<img src="${jsonIndex.recipe.image}">
-      <p>${jsonIndex.recipe.label}</p>
+    $('#recipe-results').append(
+      `<section class="recipe-section ${i}">
+      <h2>${jsonIndex.recipe.label} (${jsonIndex.recipe.yield} servings)</h2>
+      <img src="${jsonIndex.recipe.image}" class="food-image">
       <ul id="recipe-${i}"></ul>
-      <a href=${jsonIndex.recipe.url} target="_blank">${jsonIndex.recipe.url}</a><br>
+      <a href=${jsonIndex.recipe.url} target="_blank">Find the cooking instructions here</a><br>
+      </section>
       `
     )
     getIngredients(responseJson,i);
@@ -109,10 +108,15 @@ function watchForm() {
     event.preventDefault();
     const foodTerm = $('#js-food-term').val();
     const cuisineTerm = $('#js-cuisine-term').val();
-    const alergy1 = $('#alergy1').is(':checked');
-    const alergy2 = $('#alergy2').is(':checked');
-    const recipyNumber = $('#js-recipy-number').val();
-    getRecipyList(foodTerm, cuisineTerm, alergy1, alergy2, recipyNumber);
+    const alergyBooleanArray = [];
+    let alergyBoolean = true;
+    for (let a = 0; a <= 15; a++) {
+        alergyBoolean = $(`#alergy${a}`).is(':checked');
+        alergyBooleanArray.push(alergyBoolean);
+    }
+    const initialCall = 0;
+    console.log(alergyBooleanArray);
+    getInitialRecipeList(foodTerm, cuisineTerm, alergyBooleanArray, initialCall);
   });
 }
 
