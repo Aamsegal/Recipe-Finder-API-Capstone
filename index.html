@@ -7,12 +7,13 @@
     <link href="index.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://developer.edamam.com/attribution/badge.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js"></script>
   </head>
 
   <body>
 
     <main>
-        <div class="form-container">
+        <div class="form-container" id="Home" href="Home" name="Home">
             
             <h1>Recipe Finder</h1>
             <div id="edamam-badge" data-color="white" display="inline"></div>
@@ -62,6 +63,14 @@
         <section class="recipe-results" id="recipe-results">
 
         </section>
+
+        <form id="navigation-buttons" class="navigation-buttons">
+
+          <input id="back-button" class="back-button" type="submit" value="Back" href="#Home">
+
+          <input id="next-button" class="back-button" type="submit" value="Next" href="#Home">
+
+        </form>
 
     </main>
 

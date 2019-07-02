@@ -1,3 +1,15 @@
+ul {
+    list-style-type: none;
+}
+
+#back-button {
+    display: none;
+}
+
+#next-button {
+    display: none;
+}
+
 /*body {
     box-sizing: border-box;
 }
