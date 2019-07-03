@@ -1,5 +1,18 @@
 ul {
     list-style-type: none;
+    padding-left: 0;
+}
+
+.header-Group {
+    margin-bottom: 0;
+}
+
+.nutrient-group-one, .ingredient-group-one {
+    background-color: #57BB90;
+}
+
+.nutrient-group-two, .ingredient-group-two {
+    background-color: #c9c9c9;
 }
 
 #back-button {
@@ -10,7 +23,7 @@ ul {
     display: none;
 }
 
-/*body {
+body {
     box-sizing: border-box;
 }
 
@@ -20,8 +33,34 @@ ul {
     max-width: 320px;
 }
 
+.navigation-buttons {
+    text-align: center;
+}
 
-@media screen and (max-width: 520px) {}
+.back-button, .next-button {
+    font-size: 25px;
+    margin: 20px;
+}
+
+.serving-Group {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 700px) {
+    ul {
+        /*padding-left: 0;*/
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+    }
+
+    li {
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
     .form-container h1, h2, a {
         text-align: center;
     }
@@ -41,6 +80,98 @@ ul {
         text-align: center;
     }
     
-    .recipe-section {
+    .recipe-group {
         border-bottom: 2px solid black;
+        padding-bottom: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 999px) {
+    .recipe-group {
+        max-width: 700px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid black;
+    }
+
+    .nutrient-section, .recipe-section {
+        width: 300px;
+    }
+
+    .nutrient-section {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .recipe-section {
+        display:inline-block;
+    }
+
+    .ingredient-section {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    /*.recipe-section {
+        border: 1px solid black;
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
     }*/
+
+    .recipe-group {
+        border: 1px solid black;
+        max-width: 1000px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+    }
+
+    .recipe-section {
+        max-width: 300px;
+    }
+
+    ul {
+        padding-left: 0;
+        max-width: 300px;
+        border: 1px solid black;
+    }
+
+    li {
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .recipe-section, .nutrient-section, .ingredient-section {
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    a {
+        margin-bottom: 10px;
+    }
+
+    .ingredient-section {
+        width: 300px;
+    }
+
+    .nutrient-section {
+        width: 250px;
+    }
+
+
+}
