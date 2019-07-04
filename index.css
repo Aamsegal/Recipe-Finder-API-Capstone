@@ -1,6 +1,18 @@
+body {
+    box-sizing: border-box;
+}
+
 ul {
     list-style-type: none;
     padding-left: 0;
+}
+
+h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+li, a, form {
+    font-family: 'Barlow', sans-serif;
 }
 
 .header-Group {
@@ -8,11 +20,32 @@ ul {
 }
 
 .nutrient-group-one, .ingredient-group-one {
-    background-color: #57BB90;
+    background-color: #79CA39;
 }
 
 .nutrient-group-two, .ingredient-group-two {
-    background-color: #c9c9c9;
+    background-color: #e4e4e4;
+    /*background-color: #DE982F;*/
+}
+
+.recipe-group {
+    border: 1px solid black;
+}
+
+.recipe-name {
+    width: 300px;
+    background-color: #79CA39;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.recipe-header {
+    width: 250px;
+    background-color: #542B97;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #back-button {
@@ -21,10 +54,6 @@ ul {
 
 #next-button {
     display: none;
-}
-
-body {
-    box-sizing: border-box;
 }
 
 .form-form {
@@ -44,6 +73,11 @@ body {
 
 .serving-Group {
     margin-top: 0;
+}
+
+a {
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
 @media screen and (max-width: 700px) {
@@ -98,7 +132,6 @@ body {
         margin-right: auto;
         margin-bottom: 40px;
         padding-bottom: 20px;
-        border-bottom: 1px solid black;
     }
 
     .nutrient-section, .recipe-section {
@@ -107,7 +140,7 @@ body {
 
     .nutrient-section {
         display: inline-block;
-        text-align: center;
+        
     }
 
     .recipe-section {
@@ -118,6 +151,12 @@ body {
         width: 500px;
         margin-left: auto;
         margin-right: auto;
+        
+    }
+
+    .ingredient-section li, .nutrient-section li {
+        text-indent: 10px;
+        text-align: left;
     }
 }
 
@@ -130,7 +169,6 @@ body {
     }*/
 
     .recipe-group {
-        border: 1px solid black;
         max-width: 1000px;
         text-align: center;
         margin-left: auto;
@@ -159,10 +197,6 @@ body {
         display: inline-block;
         margin-left: 10px;
         margin-right: 10px;
-    }
-
-    a {
-        margin-bottom: 10px;
     }
 
     .ingredient-section {

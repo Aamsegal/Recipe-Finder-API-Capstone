@@ -59,7 +59,7 @@ function getInitialRecipeList(foodTerm, alergyBooleanArray, fromVariable, toVari
   let url = searchURL + '?' + queryString + `&from=${fromVariable}&to=${toVariable}`;
   for (let alergyIndex = 0; alergyIndex <= 15; alergyIndex++) {
     if (alergyBooleanArray[alergyIndex]) {
-        url =  url + '&health='+ $(`#alergy${alergyIndex}`).val();
+        url =  url + $(`#alergy${alergyIndex}`).val();
     } 
   }
   //creates the api url using the search url, query string, and values from the alergy checkboxes and back and next buttons
@@ -140,31 +140,40 @@ function displayResults(responseJson, url) {
     $('#recipe-results').append(
       `<section class="recipe-group">
       
-      <section class="recipe-section ${i}">
+      <section class="recipe-name">
       <h2 class="header-Group">${jsonIndex.recipe.label}</h2>
       <h2 class="serving-Group">(${servingSize} servings)</h2>
+        </section>
+
+      <section class="recipe-section ${i}">
       <img src="${jsonIndex.recipe.image}" class="food-image">
         </section>
 
       <section class="nutrient-section">
-      <h2 class="header-Group">Nutrients</h2>
-      <h2 class="serving-Group"> (per serving)</h2>
-      <ul class="nutrient-list">
-      <li class="nutrient-group-one">${caloriesPerServing} calories</li>
-      <li class="nutrient-group-two">${dailyFat}% of your daily Fat</li>
-      <li class="nutrient-group-one">${dailyFiber}% of your daily Fiber</li>
-      <li class="nutrient-group-two">${dailyProtein}% of your daily Protein</li>
-      <li class="nutrient-group-one">${dailyCholesterol}% of your daily Cholesterol</li>
-      <li class="nutrient-group-two">${dailySodium}% of your daily Sodium</li>
-      <li class="nutrient-group-one">${dailyCalcium}% of your daily Calcium</li>
-      <li class="nutrient-group-two">${dailyIron}% of your daily Iron</li>
-      <li class="nutrient-group-one">${dailyCarbs}% of your daily Carbs</li></ul>
+        <section class="recipe-header">
+          <h2 class="header-Group">Nutrients</h2>
+          <h2 class="serving-Group"> (per serving)</h2>
         </section>
 
+        <ul class="nutrient-list">
+        <li class="nutrient-group-one">${caloriesPerServing} calories</li>
+        <li class="nutrient-group-two">${dailyFat}% of your daily Fat</li>
+        <li class="nutrient-group-one">${dailyFiber}% of your daily Fiber</li>
+        <li class="nutrient-group-two">${dailyProtein}% of your daily Protein</li>
+        <li class="nutrient-group-one">${dailyCholesterol}% of your daily Cholesterol</li>
+        <li class="nutrient-group-two">${dailySodium}% of your daily Sodium</li>
+        <li class="nutrient-group-one">${dailyCalcium}% of your daily Calcium</li>
+        <li class="nutrient-group-two">${dailyIron}% of your daily Iron</li>
+        <li class="nutrient-group-one">${dailyCarbs}% of your daily Carbs</li></ul>
+      </section>
+
       <section class="ingredient-section">
-      <h2 class="recipe-info-header">Ingredients</h2>
-      <ul id="recipe-${i}"></ul>
+        <section class="recipe-header">
+          <h2 class="recipe-info-header">Ingredients</h2>
         </section>
+        
+        <ul id="recipe-${i}"></ul>
+      </section>
 
       <section class="link-section">
       <a href=${jsonIndex.recipe.url} target="_blank">Find the cooking instructions here</a>
