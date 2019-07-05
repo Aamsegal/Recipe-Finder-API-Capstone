@@ -14,16 +14,17 @@
   <body>
 
     <main>
-        <div class="form-container" id="Home" href="Home" name="Home">
+        <div class="form-container" id="Home">
             
             <h1>Recipe Finder</h1>
             <div id="edamam-badge" data-color="white" display="inline"></div>
-    
-            <form id="food-form" class="food-form">
-                <label for="food-term">Food</label>
-                <input type="text" name="food-term" id="js-food-term" placeholder="Chicken, Salmon, Beef" required><br>
 
-                <div role="checkbox" class="diet-Checkbox">
+            <form id="food-form" class="food-form">
+                <label for="#js-food-term"><h2>Type a food in the search bar</h2></label>
+                <input type="text" name="food-term" id="js-food-term" placeholder="Chicken,Salmon,Cookies" required><br>
+
+                <label for="#ls-diet-Checkbox"><h2>Choose health and/or dietary restrictions</h2></label>
+                <div role="checkbox" class="diet-Checkbox" id="js-diet-Checkbox" aria-checked="false">
                     <input type="checkbox" name="alergy0" value="&health=peanut-free" id="alergy0">Peanut free
                     <input type="checkbox" name="alergy1" value="&health=tree-nut-free" id="alergy1">Tree nut free
                     <input type="checkbox" name="alergy3" value="&health=vegan" id="alergy3">Vegan
@@ -49,9 +50,9 @@
 
         <form id="navigation-buttons" class="navigation-buttons">
 
-          <input id="back-button" class="back-button" type="submit" value="Back" href="#Home">
+          <input id="back-button" class="back-button" type="submit" value="Back">
 
-          <input id="next-button" class="back-button" type="submit" value="Next" href="#Home">
+          <input id="next-button" class="back-button" type="submit" value="Next">
           <!--buttons to go back and forward looking for more recipies-->
 
         </form>
